@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Form.css";
+import ArticleList from "../articleList/ArticleList";
 
 export default function Form() {
   const [article, setArticle] = useState("");
@@ -14,7 +15,6 @@ export default function Form() {
     articleList.push({ name: article });
     setArticleList(articleList);
     setArticle("");
-    console.log(articleList);
   };
 
   return (
@@ -34,6 +34,7 @@ export default function Form() {
             Inserisci
           </button>
         </div>
+        <ArticleList articleList={articleList}></ArticleList>
       </form>
     </>
   );
