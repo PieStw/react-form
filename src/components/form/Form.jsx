@@ -12,14 +12,20 @@ export default function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    articleList.push({ name: article });
-    setArticleList(articleList);
+    const newArticleList = [...articleList, { name: article }];
+    setArticleList(newArticleList);
     setArticle("");
   };
 
+  function deleteArticle(index) {
+    const newArticleList = [...articleList];
+    newArticleList.splice(index, 1);
+    setArticleList(newArticleList);
+  }
+
   return (
     <>
-      <form className="mb-3 form" onSubmit={handleSubmit}>
+      <form className="mb-1 form" onSubmit={handleSubmit}>
         <label className="form-label">Articoli</label>
         <div className="d-flex">
           <input
@@ -34,8 +40,13 @@ export default function Form() {
             Inserisci
           </button>
         </div>
-        <ArticleList articleList={articleList}></ArticleList>
       </form>
+      <div className="articleList">
+        <ArticleList
+          articleList={articleList}
+          deleteArticle={deleteArticle}
+        ></ArticleList>
+      </div>
     </>
   );
 }
