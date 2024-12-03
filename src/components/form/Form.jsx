@@ -23,6 +23,13 @@ export default function Form() {
     setArticleList(newArticleList);
   }
 
+  function editArticle(index) {
+    const newName = prompt("Inserisci il nuovo nome");
+    const newArticleList = [...articleList];
+    newArticleList[index].name = newName;
+    setArticleList(newArticleList);
+  }
+
   return (
     <>
       <form className="mb-1 form" onSubmit={handleSubmit}>
@@ -45,6 +52,7 @@ export default function Form() {
         <ArticleList
           articleList={articleList}
           deleteArticle={deleteArticle}
+          editArticle={editArticle}
         ></ArticleList>
       </div>
     </>
