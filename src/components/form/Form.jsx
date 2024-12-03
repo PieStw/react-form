@@ -20,7 +20,7 @@ export default function Form() {
     setArticleState(e.target.value);
   }
 
-  const handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
     const newArticleList = [
       ...articleList,
@@ -30,7 +30,7 @@ export default function Form() {
     setArticleName("");
     setArticleAuthor("");
     setArticleState("Draft");
-  };
+  }
 
   function deleteArticle(index) {
     const newArticleList = [...articleList];
@@ -40,14 +40,18 @@ export default function Form() {
 
   function editArticle(index) {
     const newName = prompt("Inserisci il nuovo nome");
+    const newState = prompt("Inserisci il nuovo nome");
+    const newAuthor = prompt("Inserisci il nuovo nome");
     const newArticleList = [...articleList];
     newArticleList[index].name = newName;
+    newArticleList[index].state = newState;
+    newArticleList[index].author = newAuthor;
     setArticleList(newArticleList);
   }
 
   return (
     <>
-      <form className="mb-1 form" onSubmit={handleSubmit}>
+      <form className="mb-1 form" onSubmit={(e) => handleSubmit(e)}>
         <label className="form-label">Articoli</label>
         <div>
           <input
