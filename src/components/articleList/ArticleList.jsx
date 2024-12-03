@@ -11,7 +11,9 @@ export default function ArticleList({
       <ul>
         {articleList.map((element, index) => (
           <li key={index} className="item">
-            <p>{element.name}</p>
+            <p>Nome articolo: {element.name}</p>
+            <p>Stato: {element.state}</p>
+            <p>Autore: {element.author}</p>
             <button
               className="btn btn-danger"
               onClick={() => {
